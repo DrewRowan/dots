@@ -51,10 +51,12 @@ function initialize() {
 
 function startGame() {
   drawCentralSquare();
-  setupDots(3, "top", gameColours[0]);
-  setupDots(3, "right", gameColours[1]);
+  setupDots(2, "top", gameColours[0]);
+  setupDots(2, "right", gameColours[1]);
   setupDots(2, "bottom", gameColours[2]);
-  setupDots(3, "left", gameColours[3]);
+  setupDots(2, "left", gameColours[3]);
+
+  countdown(5);
 
   if (finalCount == 0) {
     initialize();
@@ -183,11 +185,6 @@ function addClick(isCorrect, lineColour, posX, posY, radius, circle) {
           finalCount--;
           console.log(finalCount);
           checkFinalCount();
-        }
-        if (clicks == 0) {
-          countdown(5);
-          clicks ++;
-          // clear timer
         }
         // need to remove the click event
       }
