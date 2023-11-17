@@ -46,11 +46,17 @@ function initialize() {
 }
 
 function startGame() {
+  // TODO implement timer
+
   drawCentralSquare();
   setupDots(2, "top", gameColours[0]);
   setupDots(2, "right", gameColours[1]);
   setupDots(2, "bottom", gameColours[2]);
   setupDots(3, "left", gameColours[3]);
+
+  if (finalCount == 0) {
+    initialize();
+  }
 }
 
 function generateRandomDotColoursArrays(elementCount) {
@@ -112,7 +118,7 @@ function setupDots(elementCount, position, lineColour) {
 
 function checkFinalCount() {
   if (finalCount == 0 ) {
-    console.log("finished");
+    alert("finished");
   }
 }
 
@@ -132,23 +138,26 @@ function drawDot(dotColour, lineColour, posX, posY, radius) {
 
   if (lineColour == dotColour) {
     finalCount++;
-    gameArea.addEventListener("click", function(event) {
+    addClick(true, lineColour, posX, posY, radius, circle);
+    console.log(finalCount);
+  } else {
+    addClick(false, lineColour, posX, posY, radius, circle);
+  }
+}
+
+function addClick(isCorrect, lineColour, posX, posY, radius, circle) {
+  ['click','ontouchstart'].forEach( evt => 
+    gameArea.addEventListener(evt, function(event) {
       if (gameAreaContext.isPointInPath(circle, event.offsetX, event.offsetY)) {
-        console.log('correct');
         drawDot("white", lineColour, posX, posY, radius);
-        finalCount--;
-        checkFinalCount();
+        if (isCorrect) {
+          finalCount--;
+          console.log(finalCount);
+          checkFinalCount();
+        }
         // need to remove the click event
       }
-    });
-  } else {
-    gameArea.addEventListener("click", function(event) {
-      if (gameAreaContext.isPointInPath(circle, event.offsetX, event.offsetY)) {
-        console.log('false');
-        drawDot("white", lineColour, posX, posY, radius);
-      }
-    });
-  }
+    }));
 }
 
 function drawCentralSquare() {
