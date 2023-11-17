@@ -62,7 +62,8 @@ function startGame() {
 }
 
 function finishGame() {
-
+  alert("finished");
+  location.reload();
 }
 
 function countdown(seconds) {
@@ -79,7 +80,7 @@ function countdown(seconds) {
       setTimeout(updateTimer, 1000); // Call updateTimer after 1000 milliseconds (1 second)
     } else {
       // Countdown is complete
-      console.log("Countdown complete!");
+      finishGame()
     }
   }
 
@@ -146,8 +147,7 @@ function setupDots(elementCount, position, lineColour) {
 
 function checkFinalCount() {
   if (finalCount == 0 ) {
-    alert("finished");
-    location.reload();
+    finishGame();
   }
 }
 
