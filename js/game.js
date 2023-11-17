@@ -119,6 +119,7 @@ function setupDots(elementCount, position, lineColour) {
 function checkFinalCount() {
   if (finalCount == 0 ) {
     alert("finished");
+    location.reload();
   }
 }
 
