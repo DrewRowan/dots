@@ -63,9 +63,9 @@ function startGame() {
   }
 }
 
-function finishGame() {
+function finishGame(message) {
   clearTimeout(timer);
-  alert("finished");
+  alert(message);
   location.reload();
 }
 
@@ -82,7 +82,7 @@ function countdown(seconds) {
       timer = setTimeout(updateTimer, 1000); // Call updateTimer after 1000 milliseconds (1 second)
     } else {
       // Countdown is complete
-      finishGame();
+      finishGame("You didn't get them all");
     }
   }
 
@@ -149,7 +149,7 @@ function setupDots(elementCount, position, lineColour) {
 
 function checkFinalCount() {
   if (finalCount == 0 ) {
-    finishGame();
+    finishGame('You got them all');
   }
 }
 
