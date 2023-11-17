@@ -48,15 +48,43 @@ function initialize() {
 function startGame() {
   // TODO implement timer
 
+  countdown(5);
+
   drawCentralSquare();
-  setupDots(2, "top", gameColours[0]);
-  setupDots(2, "right", gameColours[1]);
+  setupDots(3, "top", gameColours[0]);
+  setupDots(3, "right", gameColours[1]);
   setupDots(2, "bottom", gameColours[2]);
   setupDots(3, "left", gameColours[3]);
 
   if (finalCount == 0) {
     initialize();
   }
+}
+
+function finishGame() {
+
+}
+
+function countdown(seconds) {
+  let timeLeft = seconds;
+  let timerDisplay = document.getElementById("countdownTimer");
+
+  function updateTimer() {
+    console.log(timeLeft);
+    timerDisplay.innerHTML = timeLeft;
+
+    if (timeLeft > 0) {
+      // Continue counting down
+      timeLeft--;
+      setTimeout(updateTimer, 1000); // Call updateTimer after 1000 milliseconds (1 second)
+    } else {
+      // Countdown is complete
+      console.log("Countdown complete!");
+    }
+  }
+
+  // Start the countdown
+  updateTimer();
 }
 
 function generateRandomDotColoursArrays(elementCount) {
