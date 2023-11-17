@@ -1,0 +1,59 @@
+body {
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  
+    margin: 20px auto;
+  
+    text-align: center;
+  
+    font-size: 150%;
+  
+    background-image: url("./images//wp2409705.jpg");
+  
+    background-color: #cccccc; /* Used if the image is unavailable */
+  
+    height: 800px; /* You must set a specified height */
+  
+    background-position: center;/* Center the image */
+  
+    background-repeat: no-repeat; /* Do not repeat the image */
+  
+    background-size: cover; /* Resize the background image to cover the entire container */
+  
+  }
+  
+  input {
+  
+    font-size: 100%;
+  
+    text-align: center;
+  
+    padding: 5px 7px;
+  
+  }
+  
+   canvas {
+  
+    background-color: white;
+  
+    border-radius: 20px;
+  
+    -webkit-box-shadow: 3px 3px 5px 6px black; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  
+    -moz-box-shadow: 3px 3px 5px 6px black; /* Firefox 3.5 - 3.6 */
+  
+    box-shadow: 3px 5px 6px black; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  
+  }
+  
+   div.relative {
+  
+    position: absolute;
+  
+    top: 760px;
+  
+    left: 120px;
+  
+  }
