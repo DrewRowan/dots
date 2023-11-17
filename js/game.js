@@ -20,7 +20,9 @@ let gameStart = null,
     33.3,
     38
   ],
-  finalCount = 0;
+  finalCount = 0,
+  clicks = 0,
+  timer = null;
 
 
 function initialize() {
@@ -42,14 +44,12 @@ function initialize() {
   //   this.disabled = true;
   //   startGame();
   // };
-  startGame();
+  document.getElementById("gameStart").addEventListener("click", function() {
+    startGame();
+  }, false);
 }
 
 function startGame() {
-  // TODO implement timer
-
-  countdown(5);
-
   drawCentralSquare();
   setupDots(3, "top", gameColours[0]);
   setupDots(3, "right", gameColours[1]);
@@ -62,6 +62,7 @@ function startGame() {
 }
 
 function finishGame() {
+  clearTimeout(timer);
   alert("finished");
   location.reload();
 }
@@ -71,16 +72,15 @@ function countdown(seconds) {
   let timerDisplay = document.getElementById("countdownTimer");
 
   function updateTimer() {
-    console.log(timeLeft);
     timerDisplay.innerHTML = timeLeft;
 
     if (timeLeft > 0) {
       // Continue counting down
       timeLeft--;
-      setTimeout(updateTimer, 1000); // Call updateTimer after 1000 milliseconds (1 second)
+      timer = setTimeout(updateTimer, 1000); // Call updateTimer after 1000 milliseconds (1 second)
     } else {
       // Countdown is complete
-      finishGame()
+      finishGame();
     }
   }
 
@@ -183,6 +183,11 @@ function addClick(isCorrect, lineColour, posX, posY, radius, circle) {
           finalCount--;
           console.log(finalCount);
           checkFinalCount();
+        }
+        if (clicks == 0) {
+          countdown(5);
+          clicks ++;
+          // clear timer
         }
         // need to remove the click event
       }
